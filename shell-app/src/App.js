@@ -12,7 +12,8 @@ const App = () => {
                         <li><Link to="/vue">Go to Vue App</Link></li>
                     </ul>
                 </nav>
-                <p>Select an app from the links above.</p>
+                <div id="mf-react-app"></div>
+                <div id="mf-vue-app"></div>
             </div>
         </Router>
     );

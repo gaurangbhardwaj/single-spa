@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { registerApplication, start } from 'single-spa';
 
-import './systemjs-config';
-
 // Register the React App
 registerApplication({
     name: '@react/react-app',
@@ -22,7 +20,7 @@ registerApplication({
   });
 
 // Render the shell app's layout
-const root = ReactDOM.createRoot(document.getElementById('shell-app'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <App />

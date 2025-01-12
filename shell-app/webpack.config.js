@@ -7,7 +7,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
-        publicPath: '/build/'
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx'],
@@ -15,11 +15,6 @@ module.exports = {
             "node_modules",
             path.resolve(__dirname, "./"),
           ],
-          alias: {
-            // Fixing the alias for single-spa and systemjs
-            'single-spa': path.resolve(__dirname, 'node_modules/single-spa/lib/es2015/system/single-spa.min.js'),
-            'systemjs': path.resolve(__dirname, 'node_modules/systemjs/dist/system.js'), // Correct alias for systemjs
-        },
     },
     module: {
         rules: [

@@ -1,24 +1,32 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 
-const appMountindId = '#mf-vue-app';
+const appMountingId = '#mf-vue-app';
 let vueApp = null;
 
 export function mount(props) {
-    vueApp = createApp(App);
-    vueApp.mount(appMountindId);
-    console.log("Vue App Mounted", {props});
+    return new Promise((resolve) => {
+        vueApp = createApp(App);
+        vueApp.mount(appMountingId);
+        console.log("Vue App Mounted", {props});
+        resolve();
+    });
 }
 
 export function unmount() {
-    if (vueApp) {
-        vueApp.unmount();
-        vueApp = null;
-        console.log("Vue App Unmounted");
-    }
+    return new Promise((resolve) => {
+        if (vueApp) {
+            vueApp.unmount();
+            vueApp = null;
+            console.log("Vue App Unmounted");
+        }
+        resolve();  // Resolve the Promise after unmounting
+    });
 }
 
 // Run locally if single-spa is not controlling the app
 if (!window.singleSpaNavigate) {
-    mount();
+    mount().then(() => {
+        console.log('Vue app mounted locally');
+    });
 }

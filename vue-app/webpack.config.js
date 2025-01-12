@@ -7,6 +7,9 @@ module.exports = {
   output: {
     filename: "vue-app.js",
     path: path.resolve(__dirname, 'dist'),
+    library: 'vueApp',  // Expose the library name for access
+    libraryTarget: 'umd',  // UMD allows compatibility with various module systems (including single-spa and others)
+    globalObject: 'this',  // Necessary for Node.js environments
   },
   plugins: [
     new VueLoaderPlugin(),
@@ -50,5 +53,8 @@ module.exports = {
     port: 3002,
     hot: false,
     liveReload: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',  // Allow all origins
+    },
   },
 };
